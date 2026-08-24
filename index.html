@@ -8,13 +8,12 @@
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0">
 
-<title>Kalam Home Care - 3D Heart</title>
+<title>Kalam Home Care</title>
 
 <script
 src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"
 type="module">
 </script>
-
 
 <style>
 
@@ -24,25 +23,29 @@ type="module">
 
 html,
 body{
-
     margin:0;
-
     width:100%;
     height:100%;
-
     overflow:hidden;
-
-    background:#032b59;
-
 }
-
 
 body{
+    background:
+    radial-gradient(
+        circle at 50% 48%,
+        #0b5685 0%,
+        #073d6c 35%,
+        #032b59 72%,
+        #021e40 100%
+    );
 
     font-family:Arial,Helvetica,sans-serif;
-
 }
 
+
+/* ===============================
+   MAIN STAGE
+================================ */
 
 .heart-stage{
 
@@ -51,139 +54,96 @@ body{
     width:100vw;
     height:100vh;
 
-    min-height:600px;
+    min-height:500px;
 
     display:flex;
-
     align-items:center;
     justify-content:center;
 
     overflow:hidden;
-
-    background:
-
-    radial-gradient(
-        circle at 50% 48%,
-        rgba(50,180,210,.28),
-        transparent 34%
-    ),
-
-    radial-gradient(
-        circle at 50% 50%,
-        #0a4c82 0%,
-        #073866 42%,
-        #032b59 78%,
-        #021e40 100%
-    );
-
 }
 
 
-/* =====================================================
-   GLASS GLOW
-===================================================== */
+/* ===============================
+   CENTER GLOW
+================================ */
 
 .glow{
 
     position:absolute;
 
-    width:520px;
-    height:520px;
+    width:430px;
+    height:430px;
 
     border-radius:50%;
 
     background:
-
     radial-gradient(
         circle,
-        rgba(112,227,223,.40) 0%,
-        rgba(112,227,223,.15) 35%,
+        rgba(112,227,223,.38) 0%,
+        rgba(112,227,223,.16) 35%,
         transparent 70%
     );
 
-    filter:blur(35px);
-
-    pointer-events:none;
+    filter:blur(32px);
 
     z-index:1;
 
+    pointer-events:none;
+
     animation:
-
-    glowPulse
-    1.1s
-    ease-in-out
-    infinite;
-
+    glowPulse 1.1s ease-in-out infinite;
 }
 
 
 @keyframes glowPulse{
 
-    0%,
-    100%{
-
+    0%,100%{
         transform:scale(.94);
-
         opacity:.65;
-
     }
 
-    12%{
-
-        transform:scale(1.10);
-
+    10%{
+        transform:scale(1.08);
         opacity:1;
-
     }
 
-    25%{
-
-        transform:scale(.97);
-
+    18%{
+        transform:scale(.98);
         opacity:.72;
-
     }
 
-    40%{
-
-        transform:scale(1.06);
-
+    30%{
+        transform:scale(1.04);
         opacity:.9;
-
     }
 
 }
 
 
-/* =====================================================
+/* ===============================
    ORBIT
-===================================================== */
+================================ */
 
 .orbit{
 
     position:absolute;
 
-    width:620px;
-    height:620px;
+    width:500px;
+    height:500px;
 
     border-radius:50%;
 
     border:
-
     1px solid
-    rgba(112,227,223,.18);
+    rgba(112,227,223,.20);
 
     z-index:2;
 
     pointer-events:none;
 
     animation:
-
-    orbitRotate
-    18s
-    linear
-    infinite;
-
+    orbitRotate 18s linear infinite;
 }
 
 
@@ -201,14 +161,11 @@ body{
     background:#70e3df;
 
     box-shadow:
-
     0 0 10px #70e3df,
     0 0 25px #70e3df;
 
-    top:12px;
-
+    top:8px;
     left:50%;
-
 }
 
 
@@ -226,37 +183,30 @@ body{
     background:#b9ed42;
 
     box-shadow:
-
     0 0 10px #b9ed42,
     0 0 25px #b9ed42;
 
+    right:20px;
     bottom:65px;
-
-    right:30px;
-
 }
 
 
 @keyframes orbitRotate{
 
     from{
-
         transform:rotate(0deg);
-
     }
 
     to{
-
         transform:rotate(360deg);
-
     }
 
 }
 
 
-/* =====================================================
+/* ===============================
    HEART WRAPPER
-===================================================== */
+================================ */
 
 .heart-wrapper{
 
@@ -264,8 +214,8 @@ body{
 
     z-index:5;
 
-    width:650px;
-    height:650px;
+    width:430px;
+    height:430px;
 
     display:flex;
 
@@ -273,23 +223,19 @@ body{
     justify-content:center;
 
     animation:
-
-    heartBeat
-    1.1s
-    ease-in-out
-    infinite;
+    heartbeat 1.1s ease-in-out infinite;
 
 }
 
 
-/* =====================================================
-   HEART
-===================================================== */
+/* ===============================
+   3D HEART
+================================ */
 
 model-viewer{
 
-    width:100%;
-    height:100%;
+    width:430px;
+    height:430px;
 
     display:block;
 
@@ -298,94 +244,74 @@ model-viewer{
     --poster-color:transparent;
 
     outline:none;
-
     border:none;
 
     filter:
-
     drop-shadow(
-        0 20px 25px
-        rgba(0,0,0,.25)
+        0 15px 25px rgba(0,0,0,.25)
     )
-
     drop-shadow(
-        0 0 25px
-        rgba(112,227,223,.25)
+        0 0 25px rgba(112,227,223,.28)
     );
-
 }
 
 
-/* =====================================================
+/* ===============================
    HEARTBEAT
-===================================================== */
+================================ */
 
-@keyframes heartBeat{
+@keyframes heartbeat{
 
     0%{
-
         transform:scale(1);
-
     }
 
     8%{
-
         transform:scale(1.035);
-
     }
 
     15%{
-
         transform:scale(1);
-
     }
 
     27%{
-
         transform:scale(1.018);
-
     }
 
-    37%{
-
+    38%{
         transform:scale(1);
-
     }
 
     100%{
-
         transform:scale(1);
-
     }
 
 }
 
 
-/* =====================================================
+/* ===============================
    ECG
-===================================================== */
+================================ */
 
 .ecg{
 
     position:absolute;
 
-    width:min(900px,100vw);
+    width:min(760px,100vw);
 
-    height:120px;
+    height:100px;
 
     left:50%;
     top:50%;
 
     transform:
-
     translate(-50%,-50%);
 
     z-index:8;
 
     pointer-events:none;
 
-    opacity:.58;
-
+    opacity:.62;
 }
 
 
@@ -395,7 +321,6 @@ model-viewer{
     height:100%;
 
     display:block;
-
 }
 
 
@@ -408,7 +333,6 @@ model-viewer{
     stroke-width:2;
 
     stroke-linecap:round;
-
     stroke-linejoin:round;
 
     stroke-dasharray:1000;
@@ -416,50 +340,41 @@ model-viewer{
     stroke-dashoffset:1000;
 
     filter:
-
     drop-shadow(
         0 0 7px
         rgba(185,237,66,.85)
     );
 
     animation:
-
-    ecgMove
-    2.7s
-    linear
-    infinite;
-
+    ecgMove 2.6s linear infinite;
 }
 
 
 @keyframes ecgMove{
 
     to{
-
         stroke-dashoffset:0;
-
     }
 
 }
 
 
-/* =====================================================
+/* ===============================
    LABEL
-===================================================== */
+================================ */
 
 .label{
 
     position:absolute;
 
     left:50%;
-    bottom:25px;
+    bottom:22px;
 
     transform:translateX(-50%);
 
     z-index:20;
 
     color:
-
     rgba(255,255,255,.42);
 
     font-size:10px;
@@ -467,30 +382,39 @@ model-viewer{
     letter-spacing:3px;
 
     white-space:nowrap;
-
 }
 
 
-/* =====================================================
-   MOBILE
-===================================================== */
+/* ===============================
+   DESKTOP
+================================ */
 
-@media(max-width:700px){
+@media(min-width:1000px){
 
-    .heart-stage{
-
-        min-height:500px;
-
-    }
-
-
-    .heart-wrapper{
+    .heart-wrapper,
+    model-viewer{
 
         width:430px;
         height:430px;
 
     }
 
+}
+
+
+/* ===============================
+   TABLET
+================================ */
+
+@media(max-width:800px){
+
+    .heart-wrapper,
+    model-viewer{
+
+        width:370px;
+        height:370px;
+
+    }
 
     .orbit{
 
@@ -499,7 +423,6 @@ model-viewer{
 
     }
 
-
     .glow{
 
         width:350px;
@@ -507,10 +430,46 @@ model-viewer{
 
     }
 
+    .ecg{
+
+        width:620px;
+
+    }
+
+}
+
+
+/* ===============================
+   MOBILE
+================================ */
+
+@media(max-width:500px){
+
+    .heart-wrapper,
+    model-viewer{
+
+        width:310px;
+        height:310px;
+
+    }
+
+    .orbit{
+
+        width:350px;
+        height:350px;
+
+    }
+
+    .glow{
+
+        width:280px;
+        height:280px;
+
+    }
 
     .ecg{
 
-        width:650px;
+        width:520px;
 
         opacity:.45;
 
@@ -519,35 +478,30 @@ model-viewer{
 }
 
 
-@media(max-width:450px){
+/* ===============================
+   SMALL MOBILE
+================================ */
 
-    .heart-wrapper{
+@media(max-width:380px){
 
-        width:350px;
-        height:350px;
+    .heart-wrapper,
+    model-viewer{
+
+        width:275px;
+        height:275px;
 
     }
-
 
     .orbit{
 
-        width:350px;
-        height:350px;
+        width:310px;
+        height:310px;
 
     }
-
-
-    .glow{
-
-        width:290px;
-        height:290px;
-
-    }
-
 
     .ecg{
 
-        width:550px;
+        width:450px;
 
     }
 
@@ -583,38 +537,22 @@ model-viewer{
         preserveAspectRatio="none">
 
             <path d="
-
             M0 60
-
             L150 60
-
             L175 60
-
             L190 55
-
             L205 60
-
             L250 60
-
             L270 60
-
             L285 18
-
             L300 100
-
             L315 60
-
             L370 60
-
             L395 60
-
             L415 42
-
             L430 60
-
             L900 60
-
-            " />
+            "/>
 
         </svg>
 
@@ -639,7 +577,7 @@ model-viewer{
 
         auto-rotate-delay="0"
 
-        rotation-per-second="10deg"
+        rotation-per-second="7deg"
 
         interaction-prompt="none"
 
@@ -653,9 +591,9 @@ model-viewer{
 
         environment-image="neutral"
 
-        camera-orbit="0deg 75deg 5.2m"
+        camera-orbit="0deg 75deg 10m"
 
-        field-of-view="28deg">
+        field-of-view="38deg">
 
         </model-viewer>
 
@@ -676,71 +614,49 @@ model-viewer{
 
 
 const heart =
-
-document.getElementById(
-    "heart"
-);
+document.getElementById("heart");
 
 
-/* =====================================================
+/* ===============================
    MOUSE 3D TILT
-===================================================== */
+================================ */
 
 document.addEventListener(
-
     "mousemove",
-
     function(event){
 
         const x =
-
-        (
-            event.clientX /
-            window.innerWidth
-        ) - .5;
-
+        (event.clientX /
+        window.innerWidth) - 0.5;
 
         const y =
-
-        (
-            event.clientY /
-            window.innerHeight
-        ) - .5;
+        (event.clientY /
+        window.innerHeight) - 0.5;
 
 
         heart.style.transform =
-
         "rotateX(" +
-
         (-y * 4) +
-
         "deg) rotateY(" +
-
         (x * 6) +
-
         "deg)";
 
     }
-
 );
 
 
-/* =====================================================
-   RESET TILT
-===================================================== */
+/* ===============================
+   RESET
+================================ */
 
 document.addEventListener(
-
     "mouseleave",
-
     function(){
 
         heart.style.transform =
-
         "rotateX(0deg) rotateY(0deg)";
 
     }
-
 );
 
 </script>
