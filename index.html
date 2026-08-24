@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -17,7 +18,8 @@ type="module">
     box-sizing:border-box;
 }
 
-html,body{
+html,
+body{
     margin:0;
     width:100%;
     height:100%;
@@ -25,36 +27,51 @@ html,body{
 }
 
 body{
+
     background:
     radial-gradient(
-        circle at center,
+        circle at 50% 50%,
         #2149a5 0%,
-        #163b86 42%,
+        #173d8d 40%,
         #0d2b67 72%,
         #071d4d 100%
     );
+
     font-family:Arial,Helvetica,sans-serif;
 }
 
+
+/* =========================
+   MAIN
+========================= */
+
 .heart-page{
+
     position:relative;
+
     width:100vw;
     height:100vh;
-    min-height:450px;
+
     overflow:hidden;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
+
 }
 
-/* GLOW */
+
+/* =========================
+   GLOW
+========================= */
 
 .glow{
+
     position:absolute;
 
-    width:430px;
-    height:430px;
+    width:420px;
+    height:420px;
 
     left:50%;
     top:50%;
@@ -66,27 +83,28 @@ body{
     background:
     radial-gradient(
         circle,
-        rgba(100,145,255,.28),
-        rgba(80,120,230,.10) 45%,
+        rgba(100,145,255,.25),
+        rgba(70,110,230,.08) 45%,
         transparent 72%
     );
 
-    filter:blur(32px);
+    filter:blur(35px);
 
     z-index:1;
 
-    animation:glow 1.1s ease-in-out infinite;
+    animation:glowPulse 1.1s ease-in-out infinite;
+
 }
 
-@keyframes glow{
+@keyframes glowPulse{
 
     0%,100%{
         transform:translate(-50%,-50%) scale(.95);
-        opacity:.7;
+        opacity:.65;
     }
 
     10%{
-        transform:translate(-50%,-50%) scale(1.08);
+        transform:translate(-50%,-50%) scale(1.07);
         opacity:1;
     }
 
@@ -95,34 +113,42 @@ body{
     }
 
     35%{
-        transform:translate(-50%,-50%) scale(1.04);
+        transform:translate(-50%,-50%) scale(1.03);
     }
+
 }
 
 
-/* ORBIT */
+/* =========================
+   ORBIT
+========================= */
 
 .orbit{
+
     position:absolute;
 
-    width:520px;
-    height:520px;
+    width:540px;
+    height:540px;
 
     left:50%;
     top:50%;
 
     transform:translate(-50%,-50%);
 
-    border:1px solid rgba(160,190,255,.20);
+    border:
+    1px solid
+    rgba(160,190,255,.20);
 
     border-radius:50%;
 
     z-index:2;
 
-    animation:orbit 22s linear infinite;
+    animation:orbitRotate 22s linear infinite;
+
 }
 
-.orbit:before{
+.orbit::before{
+
     content:"";
 
     position:absolute;
@@ -140,9 +166,11 @@ body{
 
     top:5px;
     left:50%;
+
 }
 
-.orbit:after{
+.orbit::after{
+
     content:"";
 
     position:absolute;
@@ -160,9 +188,10 @@ body{
 
     right:18px;
     bottom:65px;
+
 }
 
-@keyframes orbit{
+@keyframes orbitRotate{
 
     from{
         transform:translate(-50%,-50%) rotate(0deg);
@@ -171,10 +200,13 @@ body{
     to{
         transform:translate(-50%,-50%) rotate(360deg);
     }
+
 }
 
 
-/* HEART */
+/* =========================
+   HEART
+========================= */
 
 .heart-container{
 
@@ -182,18 +214,19 @@ body{
 
     z-index:5;
 
-    width:520px;
-    height:620px;
+    width:600px;
+    height:700px;
 
     display:flex;
 
     align-items:center;
     justify-content:center;
 
-    animation:beat 1.1s ease-in-out infinite;
+    animation:heartbeat 1.1s ease-in-out infinite;
+
 }
 
-@keyframes beat{
+@keyframes heartbeat{
 
     0%,100%{
         transform:scale(1);
@@ -214,19 +247,20 @@ body{
     38%{
         transform:scale(1);
     }
+
 }
 
 
-/*
-   IMPORTANT:
-   NO FIXED CAMERA ORBIT.
-   MODEL-VIEWER WILL AUTO FRAME THE GLB.
-*/
+/* =========================
+   3D MODEL
+========================= */
 
 model-viewer{
 
-    width:520px;
-    height:620px;
+    width:600px;
+    height:700px;
+
+    display:block;
 
     background:transparent;
 
@@ -235,23 +269,20 @@ model-viewer{
     border:0;
     outline:0;
 
-    display:block;
-
     pointer-events:none;
-
-    /* THIS MAKES THE GLB SMALLER */
-
-    --model-viewer-width:100%;
-    --model-viewer-height:100%;
 
     filter:
     drop-shadow(
-        0 18px 30px rgba(0,0,0,.22)
+        0 20px 30px
+        rgba(0,0,0,.22)
     );
+
 }
 
 
-/* ECG */
+/* =========================
+   ECG
+========================= */
 
 .ecg{
 
@@ -271,11 +302,14 @@ model-viewer{
     pointer-events:none;
 
     opacity:.62;
+
 }
 
 .ecg svg{
+
     width:100%;
     height:100%;
+
 }
 
 .ecg path{
@@ -290,11 +324,13 @@ model-viewer{
     stroke-linejoin:round;
 
     stroke-dasharray:1000;
+
     stroke-dashoffset:1000;
 
     filter:
     drop-shadow(
-        0 0 7px rgba(130,165,255,.9)
+        0 0 7px
+        rgba(130,165,255,.9)
     );
 
     animation:
@@ -302,6 +338,7 @@ model-viewer{
     2.6s
     linear
     infinite;
+
 }
 
 @keyframes ecgMove{
@@ -309,17 +346,20 @@ model-viewer{
     to{
         stroke-dashoffset:0;
     }
+
 }
 
 
-/* BRAND */
+/* =========================
+   BRAND
+========================= */
 
 .brand{
 
     position:absolute;
 
-    bottom:15px;
     left:50%;
+    bottom:15px;
 
     transform:translateX(-50%);
 
@@ -333,67 +373,118 @@ model-viewer{
 
     z-index:20;
 
-    white-space:nowrap;
 }
 
 
-/* TABLET */
+/* =========================
+   DESKTOP
+========================= */
+
+@media(min-width:901px){
+
+    model-viewer{
+
+        width:600px;
+        height:700px;
+
+        /*
+        IMPORTANT CAMERA FIX
+        */
+
+        --camera-orbit:0deg 80deg 70m;
+
+    }
+
+}
+
+
+/* =========================
+   TABLET
+========================= */
 
 @media(max-width:900px){
 
     .orbit{
-        width:450px;
-        height:450px;
+
+        width:460px;
+        height:460px;
+
     }
 
     .glow{
-        width:370px;
-        height:370px;
+
+        width:360px;
+        height:360px;
+
     }
 
     .heart-container{
-        width:430px;
-        height:520px;
+
+        width:500px;
+        height:600px;
+
     }
 
     model-viewer{
-        width:430px;
-        height:520px;
+
+        width:500px;
+        height:600px;
+
+        --camera-orbit:0deg 80deg 65m;
+
     }
+
 }
 
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:500px){
 
     .orbit{
+
         width:340px;
         height:340px;
+
     }
 
     .glow{
+
         width:280px;
         height:280px;
+
     }
 
     .heart-container{
-        width:330px;
-        height:420px;
+
+        width:350px;
+        height:450px;
+
     }
 
     model-viewer{
-        width:330px;
-        height:420px;
+
+        width:350px;
+        height:450px;
+
+        --camera-orbit:0deg 80deg 60m;
+
     }
 
     .ecg{
+
         width:600px;
+
         opacity:.5;
+
     }
+
 }
 
 </style>
+
 </head>
 
 
@@ -401,7 +492,9 @@ model-viewer{
 
 <div class="heart-page">
 
+
     <div class="glow"></div>
+
 
     <div class="orbit"></div>
 
@@ -437,7 +530,7 @@ model-viewer{
     </div>
 
 
-    <!-- 3D HEART -->
+    <!-- HEART -->
 
     <div class="heart-container">
 
@@ -457,17 +550,19 @@ model-viewer{
 
             disable-zoom
 
-            shadow-intensity="0.6"
+            shadow-intensity="0.55"
 
             shadow-softness="1"
 
-            exposure="0.65"
+            exposure="0.55"
 
             environment-image="neutral"
 
-            field-of-view="45deg"
+            camera-orbit="0deg 80deg 70m"
 
-            camera-controls="false">
+            camera-target="0m 0m 0m"
+
+            field-of-view="50deg">
 
         </model-viewer>
 
@@ -478,7 +573,9 @@ model-viewer{
         KALAM HOME CARE
     </div>
 
+
 </div>
 
 </body>
+
 </html>
